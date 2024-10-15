@@ -12,19 +12,19 @@ export class VehicleService {
   }
 
   saveVehicle(vehicle: IVehicle): void {
-    this.repository.create(vehicle);
+    return this.repository.create(vehicle);
   }
 
-  getVehicleById(id: string): any {
+  getVehicleById(id: string): IVehicle {
     return this.repository.findById(id);
   }
 
   updateVehicle(id: string, vehicle: IVehicle): void {
     // lógica para comprobar y obtener el vehículo a actualizar.
-    this.repository.update(vehicle);
+    return this.repository.update(vehicle);
   }
 
   deleteVehicle(id: string): void {
-    this.repository.delete(id);
+    return this.repository.delete(id);
   }
 }
