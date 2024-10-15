@@ -43,7 +43,7 @@ export class PostgresVehicleRepository implements IVehicleRepository {
   }
   findById(id: string) {
     console.log("Vehicle found in PostgresSQL");
-    return pseudoDB.filter((vehicle) => vehicle.id === id);
+    return pseudoDB.find((vehicle) => vehicle.id === id);
   }
   update(vehicle: IVehicle): IVehicle {
     console.log("Vehicle updated in PostgresSQL");
