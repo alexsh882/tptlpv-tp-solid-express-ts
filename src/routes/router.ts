@@ -9,6 +9,10 @@ export class AppRouter {
     router.use("/api/clients", ClientRoutes.routes);
     router.use("/api/vehicles", VehicleRoutes.routes);
 
+    router.use("*", (req, res) => {
+      res.status(404).json({ message: "Route Not Found" });
+    });
+
     return router;
   }
 }
