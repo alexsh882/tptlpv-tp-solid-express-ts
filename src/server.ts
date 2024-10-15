@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import { AppRouter } from "./routes/router";
 
 export class Server {
   constructor(
@@ -22,6 +23,7 @@ export class Server {
   }
   routes(): void {
     // Implementar rutas
+    this.app.use(AppRouter.routes);
   }
 
   public beforeStartFn(fn: () => Promise<void>): void {
