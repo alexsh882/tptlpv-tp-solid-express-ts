@@ -18,6 +18,8 @@ export class VehicleRoutes {
 
     router.delete("/:id", vehicleController.delete);
 
+    router.get("/:id/discount", vehicleController.applyDiscount);
+
     return router;
   }
 }

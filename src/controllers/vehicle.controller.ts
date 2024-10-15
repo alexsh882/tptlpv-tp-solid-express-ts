@@ -2,9 +2,10 @@ import { Request, Response } from "express";
 import { IVehicleRepository } from "../repositories/interfaces/vehicle-repository.interface";
 import { IVehicle } from "../services/interfaces/vehicle.interface";
 import { VehicleService } from "../services/vehicle.service";
+import { VehicleServiceWithDiscount } from "../services/vehicle-discount.service";
 
 export class VehicleController {
-  constructor(private vehicleRepository: VehicleService = new VehicleService) {}
+  constructor(private vehicleRepository: VehicleServiceWithDiscount = new VehicleServiceWithDiscount) {}
 
   create = async (req: Request, res: Response) => {
     this.vehicleRepository.saveVehicle(req.body);
@@ -28,4 +29,10 @@ export class VehicleController {
   update = async (req: Request, res: Response) => {
     this.vehicleRepository.updateVehicle(req.params.id, req.body);
   };
+
+  applyDiscount = async (req: Request, res: Response) => {
+    const vehicle = await this.vehicleRepository.applyDiscount(req.params.id);
+    
+    return res.json(vehicle);
+  }
 }
